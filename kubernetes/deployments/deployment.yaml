@@ -2,21 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx-deploy
-  name: nginx-deploy
+    app: httpd-deploy
+  name: httpd-deploy
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
-      app: nginx-deploy
-  strategy: {}
+      app: httpd-deploy
   template:
     metadata:
       labels:
-        app: nginx-deploy
+        app: httpd-deploy
     spec:
       containers:
-      - image: nginx
-        name: nginx
-        resources: {}
-status: {}
+        - image: httpd
+          name: httpd
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
