@@ -3,13 +3,13 @@ kind: Pod
 metadata:
   labels:
     run: nginx
+    label: some-label
   name: nginx
 spec:
   containers:
   - image: nginx
     name: nginx
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
+    ports:
+      - containerPort: 80
 status: {}
 
