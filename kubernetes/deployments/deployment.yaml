@@ -15,8 +15,10 @@ spec:
         app: httpd-deploy
     spec:
       containers:
-        - image: httpd
+        - image: httpd:alpine3.18
           name: httpd
+#          command: ["/bin/sh", "-c"]
+#          args: ["sleep 5; exit 1"]
   strategy:
     type: RollingUpdate
     rollingUpdate:
